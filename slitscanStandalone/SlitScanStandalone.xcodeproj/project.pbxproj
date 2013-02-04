@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		039fc99aabcfae852bb33125dd8603cb /* slitScanApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1873d4a3372c7ee3c0f89f40b2b2e74c /* slitScanApp.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -23,8 +24,10 @@
 		E4C2424810CC5A17004149E2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424510CC5A17004149E2 /* Cocoa.framework */; };
 		E4C2424910CC5A17004149E2 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424610CC5A17004149E2 /* IOKit.framework */; };
 		E4EB6799138ADC1D00A09F29 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
-		E7A3225613E3C49200BEF7AF /* slitScanApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7A3225413E3C49200BEF7AF /* slitScanApp.cpp */; };
-		E7A3225C13E3C53D00BEF7AF /* ofxSlitScan.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7A3225A13E3C53D00BEF7AF /* ofxSlitScan.cpp */; };
+		E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */; };
+		E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
+		E7F985F815E0DEA3003869B5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7F985F515E0DE99003869B5 /* Accelerate.framework */; };
+		caa4584e574df68558bde99fe1d43036 /* ofxSlitScan.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9becbf64ee56b0205cdd6c29ad894675 /* ofxSlitScan.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +61,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1873d4a3372c7ee3c0f89f40b2b2e74c /* slitScanApp.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = slitScanApp.cpp; path = src/slitScanApp.cpp; sourceTree = SOURCE_ROOT; };
+		1a9ed14a070186e3021b6a6d6ab067b0 /* ofxSlitScan.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxSlitScan.h; path = ../../../addons/ofxSlitScan/src/ofxSlitScan.h; sourceTree = SOURCE_ROOT; };
+		7c926ae8fb061112a6afab0556479551 /* slitScanApp.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = slitScanApp.h; path = src/slitScanApp.h; sourceTree = SOURCE_ROOT; };
+		9becbf64ee56b0205cdd6c29ad894675 /* ofxSlitScan.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxSlitScan.cpp; path = ../../../addons/ofxSlitScan/src/ofxSlitScan.cpp; sourceTree = SOURCE_ROOT; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -69,7 +76,7 @@
 		E45BE9770E8CC7DD009D7055 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = /System/Library/Frameworks/CoreServices.framework; sourceTree = "<absolute>"; };
 		E45BE9790E8CC7DD009D7055 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
 		E45BE97A0E8CC7DD009D7055 /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = /System/Library/Frameworks/QuickTime.framework; sourceTree = "<absolute>"; };
-		E4B69B5B0A3A1756003C02F2 /* SlitScannerDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SlitScannerDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4B69B5B0A3A1756003C02F2 /* slitscanStandaloneDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = slitscanStandaloneDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4B69E1D0A3A1BDC003C02F2 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
 		E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.xml; path = "openFrameworks-Info.plist"; sourceTree = "<group>"; };
 		E4C2424410CC5A17004149E2 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
@@ -77,32 +84,9 @@
 		E4C2424610CC5A17004149E2 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
 		E4EB691F138AFCF100A09F29 /* CoreOF.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = CoreOF.xcconfig; path = ../../../libs/openFrameworksCompiled/project/osx/CoreOF.xcconfig; sourceTree = SOURCE_ROOT; };
 		E4EB6923138AFD0F00A09F29 /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
-		E7A3225413E3C49200BEF7AF /* slitScanApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = slitScanApp.cpp; sourceTree = "<group>"; };
-		E7A3225513E3C49200BEF7AF /* slitScanApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = slitScanApp.h; sourceTree = "<group>"; };
-		E7A3225A13E3C53D00BEF7AF /* ofxSlitScan.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSlitScan.cpp; sourceTree = "<group>"; };
-		E7A3225B13E3C53D00BEF7AF /* ofxSlitScan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSlitScan.h; sourceTree = "<group>"; };
-		E7A3226813E3C6C600BEF7AF /* blending_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blending_off.png; sourceTree = "<group>"; };
-		E7A3226913E3C6C600BEF7AF /* blending_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blending_on.png; sourceTree = "<group>"; };
-		E7A3226A13E3C6C600BEF7AF /* bottom_banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottom_banner.png; sourceTree = "<group>"; };
-		E7A3226B13E3C6C600BEF7AF /* capacity_full.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = capacity_full.png; sourceTree = "<group>"; };
-		E7A3226C13E3C6C600BEF7AF /* frame_capacity.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = frame_capacity.png; sourceTree = "<group>"; };
-		E7A3226D13E3C6C600BEF7AF /* fullscreen_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fullscreen_off.png; sourceTree = "<group>"; };
-		E7A3226E13E3C6C600BEF7AF /* fullscreen_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fullscreen_on.png; sourceTree = "<group>"; };
-		E7A3226F13E3C6C600BEF7AF /* handle_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = handle_left.png; sourceTree = "<group>"; };
-		E7A3227013E3C6C600BEF7AF /* handle_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = handle_right.png; sourceTree = "<group>"; };
-		E7A3227113E3C6C600BEF7AF /* live_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = live_on.png; sourceTree = "<group>"; };
-		E7A3227213E3C6C600BEF7AF /* loadyourown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loadyourown.png; sourceTree = "<group>"; };
-		E7A3227313E3C6C600BEF7AF /* movie_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = movie_on.png; sourceTree = "<group>"; };
-		E7A3227413E3C6C600BEF7AF /* pause_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause_off.png; sourceTree = "<group>"; };
-		E7A3227513E3C6C600BEF7AF /* pause_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause_on.png; sourceTree = "<group>"; };
-		E7A3227713E3C6C600BEF7AF /* down_to_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = down_to_up.png; sourceTree = "<group>"; };
-		E7A3227813E3C6C600BEF7AF /* hard_noise.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hard_noise.png; sourceTree = "<group>"; };
-		E7A3227913E3C6C600BEF7AF /* left_to_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left_to_right.png; sourceTree = "<group>"; };
-		E7A3227A13E3C6C600BEF7AF /* random_grid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = random_grid.png; sourceTree = "<group>"; };
-		E7A3227B13E3C6C600BEF7AF /* right_to_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right_to_left.png; sourceTree = "<group>"; };
-		E7A3227C13E3C6C600BEF7AF /* soft_noise.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = soft_noise.png; sourceTree = "<group>"; };
-		E7A3227D13E3C6C600BEF7AF /* up_to_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = up_to_down.png; sourceTree = "<group>"; };
-		E7A3227E13E3C6C600BEF7AF /* video_delay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = video_delay.png; sourceTree = "<group>"; };
+		E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
+		E7E077E715D3B6510020DFD4 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
+		E7F985F515E0DE99003869B5 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +94,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7F985F815E0DEA3003869B5 /* Accelerate.framework in Frameworks */,
+				E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */,
 				E4EB6799138ADC1D00A09F29 /* GLUT.framework in Frameworks */,
 				E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */,
 				E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */,
@@ -124,16 +110,26 @@
 				E4C2424710CC5A17004149E2 /* AppKit.framework in Frameworks */,
 				E4C2424810CC5A17004149E2 /* Cocoa.framework in Frameworks */,
 				E4C2424910CC5A17004149E2 /* IOKit.framework in Frameworks */,
+				E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2b0d7425d656764b4d19d296de8f8a08 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				1a9ed14a070186e3021b6a6d6ab067b0 /* ofxSlitScan.h */,
+				9becbf64ee56b0205cdd6c29ad894675 /* ofxSlitScan.cpp */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
-				E7A3225813E3C52A00BEF7AF /* ofxSlitScan */,
+				ddc2887e401806eb6df29874df2f7551 /* ofxSlitScan */,
 			);
 			name = addons;
 			sourceTree = "<group>";
@@ -141,6 +137,7 @@
 		BBAB23C913894ECA00AA2426 /* system frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E7F985F515E0DE99003869B5 /* Accelerate.framework */,
 				E4C2424410CC5A17004149E2 /* AppKit.framework */,
 				E4C2424510CC5A17004149E2 /* Cocoa.framework */,
 				E4C2424610CC5A17004149E2 /* IOKit.framework */,
@@ -153,6 +150,8 @@
 				E45BE9770E8CC7DD009D7055 /* CoreServices.framework */,
 				E45BE9790E8CC7DD009D7055 /* OpenGL.framework */,
 				E45BE97A0E8CC7DD009D7055 /* QuickTime.framework */,
+				E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */,
+				E7E077E715D3B6510020DFD4 /* QTKit.framework */,
 			);
 			name = "system frameworks";
 			sourceTree = "<group>";
@@ -187,12 +186,11 @@
 			children = (
 				E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */,
 				E4EB6923138AFD0F00A09F29 /* Project.xcconfig */,
-				E7A3225D13E3C6B700BEF7AF /* Resources */,
 				E4B69E1C0A3A1BDC003C02F2 /* src */,
 				E4EEC9E9138DF44700A80321 /* openFrameworks */,
 				BB4B014C10F69532006C3DED /* addons */,
 				E45BE5980E8CC70C009D7055 /* frameworks */,
-				E4B69B5B0A3A1756003C02F2 /* SlitScannerDebug.app */,
+				E4B69B5B0A3A1756003C02F2 /* slitscanStandaloneDebug.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -200,8 +198,8 @@
 			isa = PBXGroup;
 			children = (
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
-				E7A3225513E3C49200BEF7AF /* slitScanApp.h */,
-				E7A3225413E3C49200BEF7AF /* slitScanApp.cpp */,
+				1873d4a3372c7ee3c0f89f40b2b2e74c /* slitScanApp.cpp */,
+				7c926ae8fb061112a6afab0556479551 /* slitScanApp.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -215,78 +213,20 @@
 			name = openFrameworks;
 			sourceTree = "<group>";
 		};
-		E7A3225813E3C52A00BEF7AF /* ofxSlitScan */ = {
+		ddc2887e401806eb6df29874df2f7551 /* ofxSlitScan */ = {
 			isa = PBXGroup;
 			children = (
-				E7A3225913E3C53D00BEF7AF /* src */,
+				2b0d7425d656764b4d19d296de8f8a08 /* src */,
 			);
 			name = ofxSlitScan;
 			sourceTree = "<group>";
 		};
-		E7A3225913E3C53D00BEF7AF /* src */ = {
-			isa = PBXGroup;
-			children = (
-				E7A3225B13E3C53D00BEF7AF /* ofxSlitScan.h */,
-				E7A3225A13E3C53D00BEF7AF /* ofxSlitScan.cpp */,
-			);
-			name = src;
-			path = ../src;
-			sourceTree = SOURCE_ROOT;
-		};
-		E7A3225D13E3C6B700BEF7AF /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				E7A3226713E3C6C600BEF7AF /* images */,
-				E7A3227613E3C6C600BEF7AF /* maps */,
-			);
-			name = Resources;
-			path = src;
-			sourceTree = "<group>";
-		};
-		E7A3226713E3C6C600BEF7AF /* images */ = {
-			isa = PBXGroup;
-			children = (
-				E7A3226813E3C6C600BEF7AF /* blending_off.png */,
-				E7A3226913E3C6C600BEF7AF /* blending_on.png */,
-				E7A3226A13E3C6C600BEF7AF /* bottom_banner.png */,
-				E7A3226B13E3C6C600BEF7AF /* capacity_full.png */,
-				E7A3226C13E3C6C600BEF7AF /* frame_capacity.png */,
-				E7A3226D13E3C6C600BEF7AF /* fullscreen_off.png */,
-				E7A3226E13E3C6C600BEF7AF /* fullscreen_on.png */,
-				E7A3226F13E3C6C600BEF7AF /* handle_left.png */,
-				E7A3227013E3C6C600BEF7AF /* handle_right.png */,
-				E7A3227113E3C6C600BEF7AF /* live_on.png */,
-				E7A3227213E3C6C600BEF7AF /* loadyourown.png */,
-				E7A3227313E3C6C600BEF7AF /* movie_on.png */,
-				E7A3227413E3C6C600BEF7AF /* pause_off.png */,
-				E7A3227513E3C6C600BEF7AF /* pause_on.png */,
-			);
-			name = images;
-			path = bin/data/images;
-			sourceTree = SOURCE_ROOT;
-		};
-		E7A3227613E3C6C600BEF7AF /* maps */ = {
-			isa = PBXGroup;
-			children = (
-				E7A3227713E3C6C600BEF7AF /* down_to_up.png */,
-				E7A3227813E3C6C600BEF7AF /* hard_noise.png */,
-				E7A3227913E3C6C600BEF7AF /* left_to_right.png */,
-				E7A3227A13E3C6C600BEF7AF /* random_grid.png */,
-				E7A3227B13E3C6C600BEF7AF /* right_to_left.png */,
-				E7A3227C13E3C6C600BEF7AF /* soft_noise.png */,
-				E7A3227D13E3C6C600BEF7AF /* up_to_down.png */,
-				E7A3227E13E3C6C600BEF7AF /* video_delay.png */,
-			);
-			name = maps;
-			path = bin/data/maps;
-			sourceTree = SOURCE_ROOT;
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E4B69B5A0A3A1756003C02F2 /* SlitScanner */ = {
+		E4B69B5A0A3A1756003C02F2 /* slitscanStandalone */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "SlitScanner" */;
+			buildConfigurationList = E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "slitscanStandalone" */;
 			buildPhases = (
 				E4B69B580A3A1756003C02F2 /* Sources */,
 				E4B69B590A3A1756003C02F2 /* Frameworks */,
@@ -298,9 +238,9 @@
 			dependencies = (
 				E4EEB9AC138B136A00A80321 /* PBXTargetDependency */,
 			);
-			name = SlitScanner;
+			name = slitscanStandalone;
 			productName = myOFApp;
-			productReference = E4B69B5B0A3A1756003C02F2 /* SlitScannerDebug.app */;
+			productReference = E4B69B5B0A3A1756003C02F2 /* slitscanStandaloneDebug.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -308,8 +248,9 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
-			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "SlitScanStandalone" */;
+			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "slitscanStandalone" */;
 			compatibilityVersion = "Xcode 2.4";
+			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				English,
@@ -328,7 +269,7 @@
 			);
 			projectRoot = "";
 			targets = (
-				E4B69B5A0A3A1756003C02F2 /* SlitScanner */,
+				E4B69B5A0A3A1756003C02F2 /* slitscanStandalone */,
 			);
 		};
 /* End PBXProject section */
@@ -365,8 +306,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
-				E7A3225613E3C49200BEF7AF /* slitScanApp.cpp in Sources */,
-				E7A3225C13E3C53D00BEF7AF /* ofxSlitScan.cpp in Sources */,
+				039fc99aabcfae852bb33125dd8603cb /* slitScanApp.cpp in Sources */,
+				caa4584e574df68558bde99fe1d43036 /* ofxSlitScan.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,18 +334,26 @@
 				GCC_ENABLE_SSE3_EXTENSIONS = YES;
 				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
 				GCC_WARN_ABOUT_INVALID_OFFSETOF_MACRO = NO;
 				GCC_WARN_ALLOW_INCOMPLETE_PROTOCOL = NO;
 				GCC_WARN_UNINITIALIZED_AUTOS = NO;
 				GCC_WARN_UNUSED_VALUE = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(OF_CORE_HEADERS)",
+					src,
+					../../../addons/ofxSlitScan/libs,
+					../../../addons/ofxSlitScan/src,
+				);
 				OTHER_CPLUSPLUSFLAGS = (
 					"-D__MACOSX_CORE__",
 					"-lpthread",
+					"-mtune=native",
 				);
+				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
@@ -420,20 +369,27 @@
 				GCC_ENABLE_SSE3_EXTENSIONS = YES;
 				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_UNROLL_LOOPS = YES;
-				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
 				GCC_WARN_ABOUT_INVALID_OFFSETOF_MACRO = NO;
 				GCC_WARN_ALLOW_INCOMPLETE_PROTOCOL = NO;
 				GCC_WARN_UNINITIALIZED_AUTOS = NO;
 				GCC_WARN_UNUSED_VALUE = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(OF_CORE_HEADERS)",
+					src,
+					../../../addons/ofxSlitScan/libs,
+					../../../addons/ofxSlitScan/src,
+				);
 				OTHER_CPLUSPLUSFLAGS = (
 					"-D__MACOSX_CORE__",
 					"-lpthread",
+					"-mtune=native",
 				);
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};
@@ -449,7 +405,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_MODEL_TUNING = G4;
+				GCC_MODEL_TUNING = NONE;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
@@ -534,8 +490,8 @@
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../libs/glut/lib/osx\"";
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_MODEL_TUNING = G4;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = NONE;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
@@ -613,7 +569,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "SlitScanStandalone" */ = {
+		E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "slitscanStandalone" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E4B69B4E0A3A1720003C02F2 /* Debug */,
@@ -622,7 +578,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "SlitScanner" */ = {
+		E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "slitscanStandalone" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E4B69B600A3A1757003C02F2 /* Debug */,

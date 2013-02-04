@@ -178,7 +178,7 @@ void ofxSlitScan::setDelayMap(float* mappix){
 	outputIsDirty = true; 
 }
 
-void ofxSlitScan::setDelayMap(ofImage map){
+void ofxSlitScan::setDelayMap(ofImage& map){
 	if(map.getWidth() != width || map.getHeight() != height){
 		ofLog(OF_LOG_ERROR, "ofxSlitScan Error -- Map dimensions do not match image dimensions. given %fx%f, need %dx%d\n", map.getWidth(), map.getHeight(), width, height);
 		return;
@@ -207,7 +207,7 @@ void ofxSlitScan::addImage(unsigned char* image){
 	outputIsDirty = true;	
 }
 
-void ofxSlitScan::addImage(ofImage image){
+void ofxSlitScan::addImage(ofImage& image){
 	if(image.type != type){
 		ofLog(OF_LOG_ERROR, "ofxSlitScan -- adding image of the wrong type");
 		return;
@@ -215,7 +215,7 @@ void ofxSlitScan::addImage(ofImage image){
 	addImage( image.getPixels() );
 }
 
-ofImage* ofxSlitScan::getOutputImage(){
+ofImage& ofxSlitScan::getOutputImage(){
 	if(outputIsDirty){
 		//calculate the new distorted image
 		unsigned char* writebuffer = outputImage.getPixels();
@@ -269,10 +269,10 @@ ofImage* ofxSlitScan::getOutputImage(){
 		outputIsDirty = false;
 	}
 
-	return &outputImage;
+	return outputImage;
 }
 
-ofImage* ofxSlitScan::getDelayMap(){
+ofImage& ofxSlitScan::getDelayMap(){
 	if(delayMapIsDirty){
 		unsigned char* pix = delayMapImage.getPixels();
 		for(int i = 0; i < width*height; i++){
@@ -281,7 +281,7 @@ ofImage* ofxSlitScan::getDelayMap(){
 		delayMapImage.setFromPixels(pix, width, height, OF_IMAGE_GRAYSCALE);
 		delayMapIsDirty = false;
 	}
-	return &delayMapImage;
+	return delayMapImage;
 }
 
 int ofxSlitScan::getWidth(){

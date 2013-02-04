@@ -147,11 +147,11 @@ void slitScanApp::initMovie(){
 void slitScanApp::update(){
     bool bNewFrame = false;	
 	if(useLiveVideo){
-		vidGrabber.grabFrame();
+		vidGrabber.update();
 		bNewFrame = vidGrabber.isFrameNew();
 	}
 	else{
-        vidPlayer.idleMovie();
+        vidPlayer.update();
 		bNewFrame = vidPlayer.isFrameNew();
 	}
 
@@ -221,7 +221,7 @@ void slitScanApp::draw(){
 	}ofPopStyle();
 	
 	if(isFullScreen){
-		warp.getOutputImage()->draw(0, 0, ofGetWidth(), ofGetHeight());
+		warp.getOutputImage().draw(0, 0, ofGetWidth(), ofGetHeight());
 		return;
 	}
 	
@@ -287,7 +287,7 @@ void slitScanApp::draw(){
 		ofRect(0, 0, WIDTH+(FRAME_PADDING*2), HEIGHT+(FRAME_PADDING*2));
 		
 		ofSetHexColor(0xffffff);
-		warp.getOutputImage()->draw(FRAME_PADDING, FRAME_PADDING);		
+		warp.getOutputImage().draw(FRAME_PADDING, FRAME_PADDING);
 		
 		//if we are hovering, draw the overlay
 		//normalize coordinates for (0,0) at top of the overlay
@@ -353,7 +353,7 @@ void slitScanApp::draw(){
 		ofRect(0, 0, WIDTH+(FRAME_PADDING*2), HEIGHT+(FRAME_PADDING*2));		
 		
 		ofSetHexColor(0xffffff);
-		warp.getDelayMap()->draw(FRAME_PADDING, FRAME_PADDING, WIDTH, HEIGHT);
+		warp.getDelayMap().draw(FRAME_PADDING, FRAME_PADDING, WIDTH, HEIGHT);
 		
 	} ofPopMatrix(); ofPopStyle();	
 	

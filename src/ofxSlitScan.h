@@ -2,7 +2,7 @@
  * 
  * The MIT License
  * 
- * Copyright (c) 2010, 2011 james george http://www.jamesgeorge.org
+ * Copyright (c) 2010, 2011 James George http://www.jamesgeorge.org
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,7 +29,7 @@
  * rolling buffer of video frames that can be sampled
  * from arbitrarly via a warp map 
  *
- * For inspiring works using this effect, check out Golen Leven's page
+ * For inspiring works using this effect, check out Golan Levin's page
  * on Slit Scan artworks
  *
  * http://www.flong.com/texts/lists/slit_scan/
@@ -72,7 +72,7 @@ class ofxSlitScan
 	 * White pixels map to the newest frames and black the oldest,
 	 * gray in between.
 	 */
-	void setDelayMap(ofImage map);
+	void setDelayMap(ofImage& map);
 	void setDelayMap(unsigned char* map, ofImageType type);
 	void setDelayMap(float* map);
 	
@@ -81,19 +81,19 @@ class ofxSlitScan
 	 * call this in succession, once per frame, when reading
 	 * an input movie or video stream
 	 */
-	void addImage(ofImage image);
+	void addImage(ofImage& image);
 	void addImage(unsigned char* image);
 
 	/**
 	 * returns the results of the
 	 * distortion
 	 */
-	ofImage* getOutputImage();
+	ofImage& getOutputImage();
 	
 	/**
 	 * gives you the output image back as an ofImage
 	 */
-	ofImage* getDelayMap();
+	ofImage& getDelayMap();
 	
 	/**
 	 * fills outbuf with the undistorted pixels 
