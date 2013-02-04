@@ -2,7 +2,7 @@
  * 
  * The MIT License
  * 
- * Copyright (c) 2010, 2011 james george http://www.jamesgeorge.org
+ * Copyright (c) 2010, 2011 James George http://www.jamesgeorge.org
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,7 +29,7 @@
  * rolling buffer of video frames that can be sampled
  * from arbitrarly via a warp map 
  *
- * For inspiring works using this effect, check out Golen Leven's page
+ * For inspiring works using this effect, check out Golan Levin's page
  * on Slit Scan artworks
  *
  * http://www.flong.com/texts/lists/slit_scan/
@@ -178,12 +178,16 @@ void ofxSlitScan::setDelayMap(float* mappix){
 	outputIsDirty = true; 
 }
 
-void ofxSlitScan::setDelayMap(ofImage& map){
+void ofxSlitScan::setDelayMap(ofBaseHasPixels& map){
+    setDelayMap(map.getPixelsRef());
+}
+
+void ofxSlitScan::setDelayMap(ofPixels& map){
 	if(map.getWidth() != width || map.getHeight() != height){
-		ofLog(OF_LOG_ERROR, "ofxSlitScan Error -- Map dimensions do not match image dimensions. given %fx%f, need %dx%d\n", map.getWidth(), map.getHeight(), width, height);
+		ofLog(OF_LOG_ERROR,"ofxSlitScan Error -- Map dimensions do not match image dimensions. given %fx%f, need %dx%d\n", map.getWidth(), map.getHeight(), width, height);
 		return;
 	}
-	setDelayMap(map.getPixels(), (ofImageType)map.type);
+	setDelayMap(map.getPixels(), map.getImageType());
 }
 
 void ofxSlitScan::setBlending(bool _blend){
@@ -206,9 +210,12 @@ void ofxSlitScan::addImage(unsigned char* image){
 	
 	outputIsDirty = true;	
 }
+void ofxSlitScan::addImage(ofBaseHasPixels& image){
+    addImage(image.getPixelsRef());
+}
 
-void ofxSlitScan::addImage(ofImage& image){
-	if(image.type != type){
+void ofxSlitScan::addImage(ofPixels& image){
+	if(image.getImageType() != type){
 		ofLog(OF_LOG_ERROR, "ofxSlitScan -- adding image of the wrong type");
 		return;
 	}

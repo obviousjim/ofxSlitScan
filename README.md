@@ -1,6 +1,5 @@
 # ofxSlitScan
 
-
 A simple utility for creating slit scan effects and video time delays. 
 It works by keeping a rolling buffer of video frames that can be sampled from arbitrarily via a warp map 
 

@@ -72,7 +72,8 @@ class ofxSlitScan
 	 * White pixels map to the newest frames and black the oldest,
 	 * gray in between.
 	 */
-	void setDelayMap(ofImage& map);
+    void setDelayMap(ofBaseHasPixels& map);
+    void setDelayMap(ofPixels& map);
 	void setDelayMap(unsigned char* map, ofImageType type);
 	void setDelayMap(float* map);
 	
@@ -81,7 +82,8 @@ class ofxSlitScan
 	 * call this in succession, once per frame, when reading
 	 * an input movie or video stream
 	 */
-	void addImage(ofImage& image);
+	void addImage(ofBaseHasPixels& image);
+    void addImage(ofPixels& image);
 	void addImage(unsigned char* image);
 
 	/**
