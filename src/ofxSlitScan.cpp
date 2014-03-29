@@ -166,11 +166,6 @@ void ofxSlitScan::setDelayMap(unsigned char* pix, ofImageType type){
 		}break;
 	}
     
-    sortedDelays.clear();
-    for(int i = 0; i < width*height; i++) {
-        sortedDelays.push_back(pair<float, int>(delayMapPixels[i], i));
-    }
-    
 	delayMapIsDirty = true;
 	outputIsDirty = true; 
 }
@@ -238,48 +233,45 @@ ofImage& ofxSlitScan::getOutputImage(){
 		float precise, alpha, invalpha;	
 		int mapMin = capacity - timeDelay - timeWidth;// (time_delay + time_width);
 		int mapMax = capacity - 1 - timeDelay;// - time_delay;
-		int bytesPerRow = width*BYTES_PER_PIXEL;
-		
+        int mapRange = mapMax - mapMin;
+        int n = width * height;
+        pixelIndex = 0;
+        
 		if(blend){
-			for(y = 0; y < height; y++){
-				for(x = 0; x < width; x++){		
-					//find pixel point in local reference
-					pixelIndex = bytesPerRow*y + x*BYTES_PER_PIXEL;
-					precise = ofMap(delayMapPixels[width*y+x], 0.0, 1.0, mapMin, mapMax, false);
-					//cast it to an integer
-					offset = int(precise);
-					
-					//calculate alpha
-					alpha = precise - offset;
-					invalpha = 1 - alpha;
-					
-					//convert to framepointer reference point
-					lower_offset = frame_index(framepointer, offset, capacity);
-					upper_offset = frame_index(framepointer, offset+1, capacity);
-					
-					//get buffers
-					unsigned char *a = buffer[lower_offset] + pixelIndex;
-					unsigned char *b = buffer[upper_offset] + pixelIndex;
-					
-					//interpolate and set values;
-					for(int c = 0; c < BYTES_PER_PIXEL; c++){
-						*outbuffer++ = (a[c]*invalpha)+(b[c]*alpha);
-					}
-				}
-			}
+			for(int i = 0; i < n; i++) {
+                //find pixel point in local reference
+                precise = delayMapPixels[i] * mapRange + mapMin;
+                //cast it to an integer
+                offset = int(precise);
+                
+                //calculate alpha
+                alpha = precise - offset;
+                invalpha = 1 - alpha;
+                
+                //convert to framepointer reference point
+                lower_offset = frame_index(framepointer, offset, capacity);
+                upper_offset = frame_index(framepointer, offset+1, capacity);
+                
+                //get buffers
+                unsigned char *a = buffer[lower_offset] + pixelIndex;
+                unsigned char *b = buffer[upper_offset] + pixelIndex;
+                
+                //interpolate and set values
+                for(int c = 0; c < BYTES_PER_PIXEL; c++) {
+                    *outbuffer++ = (a[c]*invalpha)+(b[c]*alpha);
+                }
+                pixelIndex += BYTES_PER_PIXEL;
+            }
 		}
 		else{
             pixelIndex = 0;
-            int n = width * height;
-            int mapRange = mapMax - mapMin;
 			for(int i = 0; i < n; i++) {
                 int index = delayMapPixels[i] * mapRange + mapMin;
                 index = frame_index(framepointer, index, capacity);
                 // faster than memcpy because the compiler can optimize it
-                for(int j = 0; j < BYTES_PER_PIXEL; j++) {
-                    outbuffer[j] = buffer[index][pixelIndex + j];
+                for(int c = 0; c < BYTES_PER_PIXEL; c++) {
+                    *outbuffer++ = buffer[index][pixelIndex + c];
                 }
-                outbuffer += BYTES_PER_PIXEL;
                 pixelIndex += BYTES_PER_PIXEL;
 			}
 		}
