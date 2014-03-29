@@ -148,8 +148,6 @@ class ofxSlitScan
 	
 	int bytesPerFrame;
 	bool buffersAllocated;
-    
-    vector<pair<float, int> > sortedDelays;
 };
 
 #endif
