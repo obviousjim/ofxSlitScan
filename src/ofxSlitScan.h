@@ -61,7 +61,6 @@ class ofxSlitScan
 	 * default type is OF_IMAGE_COLOR
 	 */
 	void setup(int w, int h, int capacity);
-	void setup(int w, int h, int capacity, ofImageType type);
 
 	bool isSetup();
 
@@ -147,9 +146,10 @@ class ofxSlitScan
 	int width, height;
 	ofImageType type;
 	
-	int bytesPerPixel;	
 	int bytesPerFrame;
 	bool buffersAllocated;
+    
+    vector<pair<float, int> > sortedDelays;
 };
 
 #endif
