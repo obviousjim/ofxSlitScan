@@ -45,37 +45,38 @@
 
 #include "ofxSlitScan.h"
 
+#define BYTES_PER_PIXEL 3
+
 //converts from an index (0, capacity) to the appropriate fraem in the rolling buffer
 static inline int frame_index(int framepointer, int index, int capacity){ 
-	return (framepointer + index) % capacity; 
+	framepointer += index;
+    if(framepointer < capacity) {
+        return framepointer;
+    }
+    return framepointer - capacity;
 }
 
-ofxSlitScan::ofxSlitScan(){
-	buffersAllocated = false;
+ofxSlitScan::ofxSlitScan()
+:buffersAllocated(false) {
 }
 
-void ofxSlitScan::setup(int w, int h, int _capacity){
-	setup(w,h,_capacity, OF_IMAGE_COLOR);
-}
-
-void ofxSlitScan::setup(int w, int h, int _capacity, ofImageType _type){
-	type = _type;
-	switch (type) {
-		case OF_IMAGE_GRAYSCALE:{
-			bytesPerPixel = 1;
+void ofxSlitScan::setup(int w, int h, int _capacity) {
+    switch (BYTES_PER_PIXEL) {
+		case 1:{
+			type = OF_IMAGE_GRAYSCALE;
 		}break;
-		case OF_IMAGE_COLOR:{
-			bytesPerPixel = 3;
+		case 3:{
+			type = OF_IMAGE_COLOR;
 		}break;
-		case OF_IMAGE_COLOR_ALPHA:{
-			bytesPerPixel = 4;
+		case 4:{
+			type = OF_IMAGE_COLOR_ALPHA;
 		}break;
 		default:{
 			ofLog(OF_LOG_ERROR, "ofxSlitScan Error -- Invalid image type");
 			return;
 		}break;
 	}
-	
+    
 	//clean up if reallocating
 	if(buffersAllocated){
 		free(delayMapPixels);
@@ -93,7 +94,7 @@ void ofxSlitScan::setup(int w, int h, int _capacity, ofImageType _type){
 	blend = false;
 	timeDelay = 0;
 	timeWidth = capacity;
-	bytesPerFrame = width*height*bytesPerPixel;
+	bytesPerFrame = width*height*BYTES_PER_PIXEL;
 	delayMapPixels = (float*)calloc(w*h, sizeof(float));
 	buffer = (unsigned char**)calloc(capacity, sizeof(unsigned char*));
 	for(int i = 0; i < capacity; i++){
@@ -164,7 +165,7 @@ void ofxSlitScan::setDelayMap(unsigned char* pix, ofImageType type){
 			ofLog(OF_LOG_ERROR, "ofxSlitScan -- unsupported image map type");
 		}break;
 	}
-	
+    
 	delayMapIsDirty = true;
 	outputIsDirty = true; 
 }
@@ -232,44 +233,46 @@ ofImage& ofxSlitScan::getOutputImage(){
 		float precise, alpha, invalpha;	
 		int mapMin = capacity - timeDelay - timeWidth;// (time_delay + time_width);
 		int mapMax = capacity - 1 - timeDelay;// - time_delay;
-		int bytesPerRow = width*bytesPerPixel;
-		
+        int mapRange = mapMax - mapMin;
+        int n = width * height;
+        pixelIndex = 0;
+        
 		if(blend){
-			for(y = 0; y < height; y++){
-				for(x = 0; x < width; x++){		
-					//find pixel point in local reference
-					pixelIndex = bytesPerRow*y + x*bytesPerPixel;
-					precise = ofMap(delayMapPixels[width*y+x], 0.0, 1.0, mapMin, mapMax, false);
-					//cast it to an integer
-					offset = int(precise);
-					
-					//calculate alpha
-					alpha = precise - offset;
-					invalpha = 1 - alpha;
-					
-					//convert to framepointer reference point
-					lower_offset = frame_index(framepointer, offset, capacity);
-					upper_offset = frame_index(framepointer, offset+1, capacity);
-					
-					//get buffers
-					unsigned char *a = buffer[lower_offset] + pixelIndex;
-					unsigned char *b = buffer[upper_offset] + pixelIndex;
-					
-					//interpolate and set values;
-					for(int c = 0; c < bytesPerPixel; c++){
-						*outbuffer++ = (a[c]*invalpha)+(b[c]*alpha);
-					}
-				}
-			}
+			for(int i = 0; i < n; i++) {
+                //find pixel point in local reference
+                precise = delayMapPixels[i] * mapRange + mapMin;
+                //cast it to an integer
+                offset = int(precise);
+                
+                //calculate alpha
+                alpha = precise - offset;
+                invalpha = 1 - alpha;
+                
+                //convert to framepointer reference point
+                lower_offset = frame_index(framepointer, offset, capacity);
+                upper_offset = frame_index(framepointer, offset+1, capacity);
+                
+                //get buffers
+                unsigned char *a = buffer[lower_offset] + pixelIndex;
+                unsigned char *b = buffer[upper_offset] + pixelIndex;
+                
+                //interpolate and set values
+                for(int c = 0; c < BYTES_PER_PIXEL; c++) {
+                    *outbuffer++ = (a[c]*invalpha)+(b[c]*alpha);
+                }
+                pixelIndex += BYTES_PER_PIXEL;
+            }
 		}
 		else{
-			for(y = 0; y < height; y++){
-				for(x = 0; x < width; x++){
-					pixelIndex = bytesPerRow*y + x*bytesPerPixel;
-					offset = frame_index(framepointer, ofMap(delayMapPixels[width*y+x], 0.0, 1.0, mapMin, mapMax), capacity);
-					memcpy(outbuffer, buffer[offset]+pixelIndex, bytesPerPixel);	
-					outbuffer += bytesPerPixel;
-				}
+            pixelIndex = 0;
+			for(int i = 0; i < n; i++) {
+                int index = delayMapPixels[i] * mapRange + mapMin;
+                index = frame_index(framepointer, index, capacity);
+                // faster than memcpy because the compiler can optimize it
+                for(int c = 0; c < BYTES_PER_PIXEL; c++) {
+                    *outbuffer++ = buffer[index][pixelIndex + c];
+                }
+                pixelIndex += BYTES_PER_PIXEL;
 			}
 		}
 		outputImage.setFromPixels(writebuffer, width, height, type);
