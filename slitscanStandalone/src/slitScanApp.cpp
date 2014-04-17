@@ -440,7 +440,7 @@ void slitScanApp::changeCapacity()
 		warp.setCapacity(capacity);
 	}
 	else{
-		warp.setup(WIDTH, HEIGHT, capacity, OF_IMAGE_COLOR);
+		warp.setup(WIDTH, HEIGHT, capacity);
 		warp.setDelayMap(*sampleMaps[currentSampleMapIndex]);
 		
 	}
