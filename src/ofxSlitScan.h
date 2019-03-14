@@ -46,7 +46,7 @@
 #ifndef _OFX_SLITSCAN
 #define _OFX_SLITSCAN
 
-#import "ofMain.h"
+#include "ofMain.h"
 
 class ofxSlitScan
 {
