@@ -136,10 +136,10 @@ void slitScanApp::initMovie(){
 		}
 		vidPlayer.loadMovie(file);
 		vidPlayer.setSpeed(1);
-		movieImg.allocate(vidPlayer.width, vidPlayer.height, OF_IMAGE_COLOR);
+		movieImg.allocate(vidPlayer.getWidth(), vidPlayer.getHeight(), OF_IMAGE_COLOR);
 		vidPlayer.play();	
-		if(vidPlayer.width != WIDTH || vidPlayer.height != HEIGHT){
-			movieImage.allocate(vidPlayer.width, vidPlayer.height, OF_IMAGE_COLOR);
+		if(vidPlayer.getWidth() != WIDTH || vidPlayer.getHeight() != HEIGHT){
+			movieImage.allocate(vidPlayer.getWidth(), vidPlayer.getHeight(), OF_IMAGE_COLOR);
 		}
 	}
 }
@@ -157,18 +157,18 @@ void slitScanApp::update(){
 
 	if (bNewFrame && !isPaused){
 		if(useLiveVideo){
-            colorImg.setFromPixels(vidGrabber.getPixels(), WIDTH,HEIGHT, OF_IMAGE_COLOR);
+            colorImg.setFromPixels(vidGrabber.getPixels().begin(), WIDTH,HEIGHT, OF_IMAGE_COLOR);
 	    }
 		else{
 			unsigned char* inPixels;
-			if(vidPlayer.width == WIDTH || vidPlayer.height == HEIGHT){
-				inPixels = vidPlayer.getPixels();
+			if(vidPlayer.getWidth() == WIDTH || vidPlayer.getHeight() == HEIGHT){
+				inPixels = vidPlayer.getPixels().begin();
 			}
 			else {
-				movieImage.setFromPixels(vidPlayer.getPixels(), vidPlayer.width,vidPlayer.height, OF_IMAGE_COLOR);
+				movieImage.setFromPixels(vidPlayer.getPixels().begin(), vidPlayer.getWidth(),vidPlayer.getHeight(), OF_IMAGE_COLOR);
 				ofImage resized = movieImage;
 				resized.resize(WIDTH, HEIGHT);
-				inPixels = resized.getPixels();
+				inPixels = resized.getPixels().begin();
 			}
 			colorImg.setFromPixels(inPixels, WIDTH, HEIGHT, OF_IMAGE_COLOR);
 		}
@@ -371,7 +371,7 @@ void slitScanApp::draw(){
 		ofSetHexColor(0xffffff);		
 		int frameStep = warp.getCapacity() / framesToShow;
 		int fameIndex = 0;
-		unsigned char* pixels = previewImage.getPixels();
+		unsigned char* pixels = previewImage.getPixels().begin();
 		for(int i = 0; i < framesToShow; i ++){
 			warp.pixelsForFrame(warp.getCapacity() - (frameStep*i) - 1, pixels);
 			previewImage.setFromPixels(pixels, WIDTH, HEIGHT, OF_IMAGE_COLOR);
@@ -424,7 +424,7 @@ void slitScanApp::draw(){
 		
 		ofSetHexColor(0xFFFFFF);
 		ofEnableAlphaBlending();
-		frameCapacityText.draw(capacitySliderWidth/2 - frameCapacityText.width/2, CAPACITY_SLIDER_HEIGHT/2.0 - frameCapacityText.height/2);
+		frameCapacityText.draw(capacitySliderWidth/2 - frameCapacityText.getWidth()/2, CAPACITY_SLIDER_HEIGHT/2.0 - frameCapacityText.getHeight()/2);
 		ofDisableAlphaBlending();
 		
 	} ofPopMatrix(); ofPopStyle();
@@ -580,7 +580,7 @@ bool slitScanApp::loadCustomMapIndex()
 	}
 	
 	customMap.loadImage(mapfile);
-	if(customMap.width != WIDTH || customMap.height != HEIGHT){
+	if(customMap.getWidth() != WIDTH || customMap.getHeight() != HEIGHT){
 		customMap.resize(WIDTH, HEIGHT);
 	}
 	
