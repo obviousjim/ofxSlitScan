@@ -4,7 +4,7 @@ A simple utility for creating slit scan effects and video time delays.
 It works by keeping a rolling buffer of video frames that can be sampled from arbitrarily via a warp map 
 
 For inspiring works using this effect, check out Golan Levin's page on Slit Scan artworks
-http://www.flong.com/texts/lists/slit_scan/
+http://www.flong.com/archive/texts/lists/slit_scan/
 
 official site for this little utility:
 http://www.jamesgeorge.org/ofxslitscan/
